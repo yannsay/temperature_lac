@@ -1,0 +1,53 @@
+---
+title: "Température - Hermance"
+format: html
+
+---
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+source("run.R")
+```
+
+*Mise à jour le `r update_day`*
+
+::::{.panel-tabset}
+
+## Week-end
+
+::: {layout="[50,50]"}
+
+### Samedi `r unique_days[which(week_days == "Saturday")] %>% ymd() %>% format("%d %m %Y")`
+```{r}
+small_show_table_day$Saturday |>
+  create_gt_table()
+
+long_show_table_day$Saturday |>
+  create_gt_table()
+```
+
+### Dimanche  `r unique_days[which(week_days == "Sunday")] %>% ymd() %>% format("%d %m %Y")`
+```{r}
+small_show_table_day$Sunday |>
+  create_gt_table()
+long_show_table_day$Sunday |>
+  create_gt_table()
+```
+
+
+:::
+```{r}
+dmY_format <- unique_days %>% ymd() %>% format("%d %m %Y")
+```
+
+## Semaine `r paste(min(dmY_format), "-", max(dmY_format))`
+
+```{r}
+
+small_show_table |>
+  create_gt_table()
+```
+
+
+::::

@@ -1,0 +1,36 @@
+.background-container {
+    background-image: url("background-picture.jpg");
+
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    height: 100vh; /* Set the container height to one screen height */
+    overflow-y: auto; /* Enable vertical scrolling */
+
+}
+
+.column-container {
+    height: 100vh; /* Set the container height to one screen height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+
+.parallax-container {
+  position: relative;
+}
+
+.parallax-image-container {
+  background-image: url(https://github.com/holtzy/dataviz-inspiration/blob/main/public/misc/overview1.png?raw=true);
+  height: 200px;
+  background-attachment: fixed;
+  opacity: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*<div class="parallax-container"><div class="parallax-image-container"></div></div>*/
+body {
+ background-image: linear-gradient(#008cba, #000066);
+}
