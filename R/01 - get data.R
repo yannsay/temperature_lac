@@ -51,7 +51,6 @@ dates_names <- day_hour %>% as.character() %>%
    str_replace_all(":00$", "")
 
 dates_names <- ifelse(nchar(dates_names) < max(nchar(dates_names)), paste(dates_names, "00:00"), dates_names)
- #%>% weekdays()
 
 initialdata <- json_data$temperature$data %>%
   as_tibble() %>%
@@ -76,6 +75,16 @@ small_show_table <- long_show_table %>%
 
 unique_days <- dates_names %>% str_remove_all(" .*") %>% unique()
 week_days <- dates_names %>% ymd_hm(tz = "CET") %>% weekdays() %>% unique()
+if("lundi" %in% week_days) {
+  week_days <- week_days %>%
+    str_replace("lundi", "Monday") %>%
+    str_replace("mardi", "Tuesday") %>%
+    str_replace("mercredi", "Wednesday") %>%
+    str_replace("jeudi", "Thursday") %>%
+    str_replace("vendredi", "Friday") %>%
+    str_replace("samedi", "Saturday") %>%
+    str_replace("dimanche", "Sunday")
+}
 
 long_show_table_day <- map(unique_days,
                            ~select(long_show_table, profondeur, contains(.x))) %>%
